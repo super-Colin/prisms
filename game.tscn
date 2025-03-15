@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://bm051ovsd0roa"]
+
+[ext_resource type="PackedScene" uid="uid://blvi4360dy1d8" path="res://laser.tscn" id="1_80nbo"]
+
+[node name="Game" type="Node2D"]
+
+[node name="Laser" parent="." instance=ExtResource("1_80nbo")]
+position = Vector2(76, 164)
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(76, 164)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2(-22, -33)
+polygon = PackedVector2Array(407, -11, 346, 82, 466, 81)
