@@ -1,48 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bhfxbbxvge245"]
+[gd_scene load_steps=2 format=3 uid="uid://bhfxbbxvge245"]
 
 [ext_resource type="Script" uid="uid://bg7qds3xyidbc" path="res://prism.gd" id="1_43dlp"]
-[ext_resource type="Script" uid="uid://bsc7sxj0632xg" path="res://prism_inner.gd" id="2_ko6rx"]
-[ext_resource type="Script" uid="uid://d2doa6inefqfu" path="res://prism_outer.gd" id="3_iie7k"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_r8nan"]
-size = Vector2(78, 3.68911)
-
-[node name="Prism" type="Node2D"]
+[node name="Prism" type="Area2D"]
 script = ExtResource("1_43dlp")
 
-[node name="Inner" type="Area2D" parent="."]
-script = ExtResource("2_ko6rx")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Inner"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(0, -43, -38, 24, 40, 24)
-
-[node name="Outer" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 2
-script = ExtResource("3_iie7k")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Outer"]
-position = Vector2(-20.5, -10)
-rotation = 2.0944
-shape = SubResource("RectangleShape2D_r8nan")
-
-[node name="Outer2" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 2
-script = ExtResource("3_iie7k")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Outer2"]
-position = Vector2(21, -10)
-rotation = 4.18879
-shape = SubResource("RectangleShape2D_r8nan")
-
-[node name="Outer3" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 2
-script = ExtResource("3_iie7k")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Outer3"]
-position = Vector2(1, 26)
-shape = SubResource("RectangleShape2D_r8nan")
-
-[connection signal="mouse_entered" from="Inner" to="." method="_on_inner_mouse_entered"]

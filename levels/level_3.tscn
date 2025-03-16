@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://sml3bqkx2jem"]
+
+[ext_resource type="PackedScene" uid="uid://blvi4360dy1d8" path="res://laser.tscn" id="1_gew73"]
+[ext_resource type="PackedScene" uid="uid://bhfxbbxvge245" path="res://prism.tscn" id="2_bmgug"]
+[ext_resource type="PackedScene" uid="uid://c0xctno0pq8ni" path="res://goal.tscn" id="3_20opy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_btoec"]
+size = Vector2(60, 152)
+
+[node name="Level1" type="Node2D"]
+
+[node name="Laser" parent="." instance=ExtResource("1_gew73")]
+position = Vector2(76, 164)
+
+[node name="Prism" parent="." instance=ExtResource("2_bmgug")]
+position = Vector2(389, 168)
+splits = 2
+
+[node name="Goal" parent="." instance=ExtResource("3_20opy")]
+position = Vector2(707, 498)
+rotation = 1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal"]
+position = Vector2(-2.00005, -15)
+shape = SubResource("RectangleShape2D_btoec")

@@ -1,33 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bm051ovsd0roa"]
+[gd_scene load_steps=4 format=3 uid="uid://bm051ovsd0roa"]
 
 [ext_resource type="Script" uid="uid://dsi30yy2e7npu" path="res://game.gd" id="1_7jktm"]
-[ext_resource type="PackedScene" uid="uid://blvi4360dy1d8" path="res://laser.tscn" id="1_80nbo"]
-[ext_resource type="PackedScene" uid="uid://bhfxbbxvge245" path="res://prism.tscn" id="2_e2o6t"]
-[ext_resource type="PackedScene" uid="uid://c0xctno0pq8ni" path="res://goal.tscn" id="3_feb5d"]
+[ext_resource type="PackedScene" uid="uid://dmwm30y8dux3v" path="res://levels/level_1.tscn" id="3_feb5d"]
 [ext_resource type="PackedScene" uid="uid://4hktjrx57c3e" path="res://congrats_menu.tscn" id="5_ryrav"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fc0e3"]
-size = Vector2(60, 152)
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_7jktm")
-
-[node name="Laser" parent="." instance=ExtResource("1_80nbo")]
-position = Vector2(76, 164)
-
-[node name="Prism" parent="." instance=ExtResource("2_e2o6t")]
-position = Vector2(270, 172)
-
-[node name="Goal" parent="." instance=ExtResource("3_feb5d")]
-position = Vector2(651, 54)
-rotation = 1.5708
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal"]
-position = Vector2(23.0004, 114)
-shape = SubResource("RectangleShape2D_fc0e3")
-
-[node name="Prism2" parent="." instance=ExtResource("2_e2o6t")]
-position = Vector2(505, 126)
 
 [node name="CongratsMenu" parent="." instance=ExtResource("5_ryrav")]
 unique_name_in_owner = true
@@ -38,3 +16,5 @@ offset_right = 421.0
 offset_bottom = 334.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="Level" parent="." instance=ExtResource("3_feb5d")]

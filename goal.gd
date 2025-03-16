@@ -14,7 +14,8 @@ var isGoal = true
 
 
 func goalHit(byRay:Node2D):
-	Globals.s_goalHit.emit()
+	Globals.s_levelComplete.emit()
+	print("hit goal!")
 
 
 func _ready() -> void:

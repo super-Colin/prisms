@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://srylk41fv8ot"]
+
+[ext_resource type="Script" uid="uid://bl3ry50w7knoy" path="res://laserRay.gd" id="1_mhvqf"]
+
+[node name="LaserRay" type="RayCast2D"]
+script = ExtResource("1_mhvqf")
