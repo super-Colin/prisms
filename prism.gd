@@ -4,28 +4,23 @@ extends Node2D
 @export var splits = 1
 @export var angle = 90
 
-var calledRefract = false
-var notCalledRefractFrames = 0
-var incomingRay
-var internalRay:RayCast2D
-var externalRay:RayCast2D
-
-
-var reflectInternal = true
-var reflectExternal = false
-var reflectable = true
+#
+#var reflectInternal = true
+#var reflectExternal = false
+#var reflectable = true
 
 
 
 
 func _physics_process(delta: float) -> void:
+	pass
 	#createRefractionRaycast()
-	if internalRay != null:
-		var colliding = internalRay.is_colliding()
-		if colliding:
-			var collider = internalRay.get_collider()
-			if "createRefractionRaycast" in collider:
-				collider.createRefractionRaycast(internalRay)
+	#if internalRay != null:
+		#var colliding = internalRay.is_colliding()
+		#if colliding:
+			#var collider = internalRay.get_collider()
+			#if "createRefractionRaycast" in collider:
+				#collider.createRefractionRaycast(internalRay)
 
 
 
@@ -71,8 +66,3 @@ func _physics_process(delta: float) -> void:
 	#currentRay.collide_with_areas = true
 	#currentRay.position = ray.get_collision_point() - $'.'.global_position
 	#currentRay.target_position = ray.target_position.rotated(-PI/24)
-
-func createSecondaryRefractionRaycast()->void:
-	if not externalRay:
-		externalRay = RayCast2D.new()
-		$'.'.add_child(externalRay)
