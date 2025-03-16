@@ -4,57 +4,80 @@ extends Node2D
 @export var wavelenghtSpectrumMax:Vector2= Vector2.ZERO
 
 
+
 func _ready() -> void:
-	RayCast2D
+	projectLaser()
 
 
-
-func _physics_process(delta: float) -> void:
-	var collider = $RayCast2D.get_collider()
-	#if collider != null && "reflectInternal" in collider:
+#force_raycast_update() 
+func projectLaser():
+	var firstRay = newLaserRay()
+	$'.'.add_child(firstRay)
+	firstRay.force_raycast_update()
+	var collider = firstRay.get_collider()
+	print("laser - collider ", collider)
 	if collider != null:
-		#if collider.reflectInternal:
-			#collider.handleRefraction($RayCast2D)
-			if not extended:
-				#extendedRay = extendRay($RayCast2D.get_collision_point(), $RayCast2D.get_collision_normal())
-				extendedRay = extendRay($RayCast2D)
-				extendedRay.collision_mask = 2
-				$'.'.add_child(extendedRay)
-				extended = true
-			collider = extendedRay.get_collider()
-			if collider != null:
-				if not extended2:
-					#extendedRay2 = extendRay(extendedRay.get_collision_point(), extendedRay.get_collision_normal())
-					extendedRay2 = extendRay(extendedRay)
-					$'.'.add_child(extendedRay2)
-					extended2 = true
-					print("laser - fully extended")
-				
+		if "reflectable" in collider:
+			print("laser - collider ", collider.reflectable)
+			if collider.reflectInternal:
+				extendedRay = extendRay(firstRay, true)
+				extendedRay.position -= $'.'.position
+				$'.'/Rays.add_child(extendedRay)
 
 
-
+func newLaserRay():
+	var newRay = RayCast2D.new()
+	newRay.collide_with_areas = true
+	newRay.target_position = Vector2(1000,0)
+	return newRay
 
 var extended = false
 var extended2 = false
 var extendedRay
 var extendedRay2
-#func extendRay(contactPoint:Vector2, contactNormal:Vector2):
-	##var newRay = RayCast2D.new()
-	#var newRay = $RayCast2D.duplicate()
-	#newRay.collide_with_areas = true
-	#newRay.position = contactPoint - $'.'.position
-	#newRay.target_position = newRay.target_position.rotated(-PI/24)
-	#print("laser - extended: ", contactPoint)
-	#return newRay
-func extendRay(theRay):
-	var newRay = RayCast2D.new()
+
+func extendRay(theRay, internal=true):
+	var newRay = newLaserRay()
 	#var newRay = theRay.duplicate()
-	newRay.collide_with_areas = true
-	#newRay.target_position = Vector2(100, 0)
-	newRay.position = theRay.get_collision_point() - $'.'.position
-	newRay.target_position = theRay.target_position.rotated(-PI/24)
-	print("laser - extended: ", theRay.get_collision_point())
+	newRay.position = theRay.get_collision_point()
+	if internal:
+		newRay.target_position = theRay.target_position.rotated(-PI/24)
+		newRay.collision_mask = 2
+	print("laser - extended: ", theRay.get_collision_point(), ", ", newRay.position)
 	return newRay
+
+
+func _physics_process(delta: float) -> void:
+	#return
+	projectLaser()
+
+	#var collider = $Rays/RayCast2D.get_collider()
+	##if collider != null && "reflectInternal" in collider:
+	#if collider != null:
+		##if collider.reflectInternal:
+			##collider.handleRefraction($RayCast2D)
+			##if not extended:
+				##extendedRay = extendRay($RayCast2D.get_collision_point(), $RayCast2D.get_collision_normal())
+			#extendedRay = extendRay($Rays/RayCast2D)
+			#extendedRay.collision_mask = 2
+			#extendedRay.position -= $'.'.position
+			#$'.'.add_child(extendedRay)
+				##extended = true
+			#collider = extendedRay.get_collider()
+			#if collider != null:
+				##if not extended2:
+					##extendedRay2 = extendRay(extendedRay.get_collision_point(), extendedRay.get_collision_normal())
+				#extendedRay2 = extendRay(extendedRay)
+				#$'.'.add_child(extendedRay2)
+				#extendedRay2.position -= $'.'.position
+					##extended2 = true
+				#print("laser - fully extended")
+				#
+
+
+	
+
+
 
 
 

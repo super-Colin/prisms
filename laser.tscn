@@ -12,6 +12,4 @@ scale = Vector2(0.0892114, 0.0892114)
 texture = ExtResource("1_fn5yt")
 metadata/_edit_lock_ = true
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
-target_position = Vector2(686, 0)
-collide_with_areas = true
+[node name="Rays" type="Node2D" parent="."]

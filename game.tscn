@@ -8,17 +8,17 @@
 size = Vector2(60, 152)
 
 [node name="Game" type="Node2D"]
-position = Vector2(63, 175)
 
 [node name="Laser" parent="." instance=ExtResource("1_80nbo")]
 position = Vector2(76, 164)
 
 [node name="Prism" parent="." instance=ExtResource("2_e2o6t")]
-position = Vector2(400, 182)
+position = Vector2(400, 153)
 
 [node name="Goal" parent="." instance=ExtResource("3_feb5d")]
 position = Vector2(651, 54)
 rotation = 1.5708
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Goal"]
+position = Vector2(-2.00001, -140)
 shape = SubResource("RectangleShape2D_fc0e3")

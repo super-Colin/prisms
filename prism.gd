@@ -12,8 +12,8 @@ var externalRay:RayCast2D
 
 
 var reflectInternal = true
-
-
+var reflectExternal = false
+var reflectable = true
 
 
 

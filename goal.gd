@@ -1,6 +1,9 @@
 extends Area2D
 
 
+@export var neededLasers = 1
+
+
 func _ready() -> void:
 	pass
 
