@@ -1,8 +1,8 @@
 extends Area2D
 
 
-#var reflectInternal = false
-var reflectInternal = true
+var reflectInternal = false
+#var reflectInternal = true
 var reflectExternal = false
 var reflectable = true
 

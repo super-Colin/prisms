@@ -6,7 +6,7 @@ signal reflectNeeded
 var extendingRay:Node2D
 var extended = false
 
-var updateEveryXFrames = 40
+var updateEveryXFrames = 10
 var updateFrameCounter = 0
 
 func _physics_process(delta: float) -> void:
@@ -51,18 +51,12 @@ func extendRay(colliderArea):
 	#var newRay = theRay.duplicate()
 	newRay.position = $'.'.get_collision_point() - $'.'.global_position
 	if colliderArea.reflectInternal:
-		#newRay.target_position = $'.'.target_position.rotated(colliderArea.internalAngle + ($'.'.get_collision_normal().angle() * -1) )
-		#newRay.target_position = $'.'.target_position.rotated(colliderArea.internalAngle + ($'.'.get_collision_normal().angle() ) * -1 )
-		#newRay.target_position = $'.'.target_position.rotated($'.'.get_collision_normal().angle() * -1)
-		#newRay.target_position = $'.'.target_position.rotated( (-PI/24))
-		#var twistAngle = (-PI/24) + $'.'.get_collision_normal().angle() * -1
 		var twistAngle = (-PI/24) + ($'.'.get_collision_normal() * -1).angle()
 		newRay.target_position = $'.'.target_position.rotated(twistAngle)
 		print($'.'.get_collision_normal().angle(), ", ", twistAngle)
-		#newRay.target_position = $'.'.target_position.rotated($'.'.get_collision_normal().angle())
 	elif colliderArea.reflectExternal:
 		#newRay.target_position = $'.'.target_position.rotated($'.'.get_collision_normal())
-		newRay.target_position = $'.'.target_position + $'.'.get_collision_normal()
+		newRay.target_position = $'.'.target_position.rotated($'.'.get_collision_normal())
 
 	newRay.collision_mask = colliderArea.nextLayer
 	#print("laser - extended: ", $'.'.get_collision_point(), ", ", newRay.position)

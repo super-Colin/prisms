@@ -27,7 +27,7 @@ position = Vector2(23.0004, 114)
 shape = SubResource("RectangleShape2D_fc0e3")
 
 [node name="Prism2" parent="." instance=ExtResource("2_e2o6t")]
-position = Vector2(547, 273)
+position = Vector2(505, 126)
 
 [node name="CongratsMenu" parent="." instance=ExtResource("5_ryrav")]
 unique_name_in_owner = true
