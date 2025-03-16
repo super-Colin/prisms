@@ -5,8 +5,8 @@ extends Node2D
 
 
 
-func _ready() -> void:
-	projectLaser()
+#func _ready() -> void:
+	#projectLaser()
 
 
 #force_raycast_update() 
@@ -46,10 +46,10 @@ func extendRay(theRay, internal=true):
 	print("laser - extended: ", theRay.get_collision_point(), ", ", newRay.position)
 	return newRay
 
-
-func _physics_process(delta: float) -> void:
-	#return
-	projectLaser()
+#
+#func _physics_process(delta: float) -> void:
+	##return
+	#projectLaser()
 
 	#var collider = $Rays/RayCast2D.get_collider()
 	##if collider != null && "reflectInternal" in collider:

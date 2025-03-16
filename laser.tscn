@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://blvi4360dy1d8"]
+[gd_scene load_steps=4 format=3 uid="uid://blvi4360dy1d8"]
 
 [ext_resource type="Script" uid="uid://d06oaimq4g6wm" path="res://laser.gd" id="1_6vqwg"]
 [ext_resource type="Texture2D" uid="uid://d3cse673rajit" path="res://laser.jpg" id="1_fn5yt"]
+[ext_resource type="Script" uid="uid://bl3ry50w7knoy" path="res://laserRay.gd" id="3_g6b45"]
 
 [node name="Laser" type="Node2D"]
 script = ExtResource("1_6vqwg")
@@ -12,4 +13,7 @@ scale = Vector2(0.0892114, 0.0892114)
 texture = ExtResource("1_fn5yt")
 metadata/_edit_lock_ = true
 
-[node name="Rays" type="Node2D" parent="."]
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(1000, 0)
+collide_with_areas = true
+script = ExtResource("3_g6b45")
